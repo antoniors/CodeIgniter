@@ -19,10 +19,10 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Key extends REST_Controller {
 
     protected $methods = [
-            'index_put' => ['level' => 10, 'limit' => 10],
-            'index_delete' => ['level' => 10],
-            'level_post' => ['level' => 10],
-            'regenerate_post' => ['level' => 10],
+            'index_put' => ['level' => 10, 'log' => true],
+            'index_delete' => ['level' => 10, 'log' => true],
+            'level_post' => ['level' => 10, 'log' => true],
+            'regenerate_post' => ['level' => 10, 'log' => true],
         ];
 
     /**
