@@ -1,0 +1,227 @@
+/*#page-container,*/
+.navbar-default {
+  background-color : #ffffff;
+}
+
+#sidebar-brand {
+  height: 240px;
+  background-color: lighten(@brand-primary, 6.5%);
+}
+
+/*
+
+.sidebar-content {
+  width: 220px;
+  color: #acb5bf;
+
+}
+
+.sidebar-section {
+  padding: 10px 15px;
+}
+
+#sidebar-extra-info {
+  padding: 7px 15px 10px;
+}
+
+*/
+.sidebar-title {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+  margin: 0;
+  font-weight: 300;
+  font-size: 18px;
+  display: block;
+  color: #ffffff;
+  background-color:  lighten(@brand-primary, 6.5%); // #337ab7;
+  -webkit-transition: background .2s ease-out;
+  transition: background .2s ease-out;
+}
+/**
+a.sidebar-title:hover,
+a.sidebar-title:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.sidebar-title i {
+  width: 18px;
+  margin-right: 8px;
+  opacity: .75;
+}
+*/
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 0;
+
+  .notification {
+    margin: 10px;
+    font-size: 14px;
+  }
+
+  span.info {
+    margin: 18px 0px;
+    line-height: 36px;
+    width: 36px;
+    float: left;
+    margin-right: 5px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+
+/*
+.sidebar-separator {
+  padding: 5px 0;
+  color: #ffffff;
+  text-align: center;
+}
+*/
+
+
+/*
+#sidebar-toggle-mini {
+  display: none;
+}
+
+*/
+.sidebar-logo {
+  padding-top: 20px;
+  padding-bottom: 55px;
+
+}
+.sidebar-nav a {
+  display: block;
+  color: white;
+  font-size: 14px;
+  padding: 0 10px;
+  min-height: 40px;
+  line-height: 38px;
+  position: relative;
+  padding: 17px 0px;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a:focus,
+.sidebar-nav a.active,
+.sidebar-nav a.open,
+.sidebar-nav li.active > a {
+  /*color: #ffffff;*/
+  text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+  /*color: #454e59;*/
+  /*background: rgba(167, 156, 101, .75);*/
+  color: @brand-info;
+}
+/*
+.sidebar-nav a.open,
+.sidebar-nav li.active > a {
+  background: rgba(0, 0, 0, .2);
+}
+
+.sidebar-nav a.active {
+  background: #ffffff;
+  color: #454e59;
+  border-right: 4px solid #5ccdde;
+}
+*/
+.sidebar-nav a > .sidebar-nav-icon {
+  margin-right: 25px;
+  font-size: 25px;
+}
+/*
+
+/*
+.sidebar-nav a > .sidebar-nav-icon,
+.sidebar-nav a > .sidebar-nav-indicator {
+  display: inline-block;
+  opacity: .5;
+  width: 18px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.sidebar-nav a > .sidebar-nav-indicator {
+  float: right;
+  line-height: inherit;
+  margin-left: 4px;
+  font-size: 10px;
+  -webkit-transition: -webkit-transform .15s ease-out;
+  transition: transform .15s ease-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+.sidebar-nav a.active > .sidebar-nav-indicator,
+.sidebar-nav a.open > .sidebar-nav-indicator,
+.sidebar-nav li.active > a > .sidebar-nav-indicator {
+  -webkit-transform: rotate(-90deg) rotateZ(0deg);
+  transform: rotate(-90deg) rotateZ(0deg);
+}
+
+.sidebar-nav ul {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  -webkit-transition: background .25s ease-out;
+  transition: background .25s ease-out;
+}
+
+.sidebar-nav .active > ul,
+.sidebar-nav .open + ul {
+  display: block;
+  background: rgba(255, 255, 255, .1);
+}
+
+.sidebar-nav ul a {
+  margin: 0 0 0 19px;
+  padding-left: 19px;
+  border-left: 1px solid #454e59;
+  min-height: 34px;
+  line-height: 34px;
+  font-weight: normal;
+}
+
+.sidebar-nav ul a.open,
+.sidebar-nav ul li.active > a {
+  background: none;
+}
+
+.sidebar-nav ul ul {
+  margin: 0 0 0 19px;
+}
+
+.sidebar-nav ul ul a {
+  margin: 0;
+  padding-left: 19px;
+  font-size: 13px;
+  min-height: 32px;
+  line-height: 32px;
+}
+
+.sidebar-nav ul .active > ul,
+.sidebar-nav ul .open + ul {
+  background-color: #454e59;
+}*/
+#page-container.sidebar-visible-xs #sidebar {
+  left: 0;
+}
+
+#page-container.sidebar-visible-xs #main-container {
+  margin-left: 225px;
+  margin-right: -225px;
+}
+#page-container.sidebar-visible-xs header.navbar-fixed-top,
+#page-container.sidebar-visible-xs header.navbar-fixed-bottom {
+  left: 225px;
+  right: -225px;
+}
