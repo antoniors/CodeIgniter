@@ -35,10 +35,12 @@ class Key extends REST_Controller {
     {
         // Build a new key
         $key = $this->_generate_key();
+        $request = json_decode(file_get_contents('php://input'), true);
+
 
         // If no key level provided, provide a generic key
-        $level = $this->put('level') ? $this->put('level') : 1;
-        $ignore_limits = ctype_digit($this->put('ignore_limits')) ? (int) $this->put('ignore_limits') : 1;
+        $level = isset($request['level']) ? $request['level'] : 1;
+        $ignore_limits = ctype_digit($request['ignore_limits']) ? (int) $request['ignore_limits'] : 1;
 
         // Insert the new key
         if ($this->_insert_key($key, ['level' => $level, 'ignore_limits' => $ignore_limits]))

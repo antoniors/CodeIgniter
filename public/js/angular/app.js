@@ -1,21 +1,16 @@
-angular.module('components', []).directive('uppercased', function() {
+angular.module('components', []).directive('uppercased', function () {
     return {
-        require : 'ngModel',
-        link: function(scope, element, attrs, modelCtrl) {
-            modelCtrl.$parsers.push(function(input) {
+        require: 'ngModel',
+        link: function (scope, element, attrs, modelCtrl) {
+            modelCtrl.$parsers.push(function (input) {
                 return input ? input.toUpperCase() : "";
             });
-            element.css("text-transform","uppercase");
+            element.css("text-transform", "uppercase");
         }
     };
 });
 
-var App = angular.module('App', ['ui.router','components']);
-
-
-
-
-
+var App = angular.module('App', ['ui.router', 'components']);
 
 
 App.config(function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $httpProvider) {
@@ -29,32 +24,10 @@ App.config(function ($stateProvider, $urlRouterProvider, $controllerProvider, $c
     App.value = $provide.value;
 
 
-
-    //var oldWhiteList = $compileProvider.imgSrcSanitizationWhitelist();
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(http|https?|ftp|file|blob|mailto|chrome-extension|app):|data:image\//);
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(http|https?|ftp|file|blob|mailto|chrome-extension|app):|data:image\//);
 
-    $stateProvider
 
-        .state('Usuario', {
-            url: '/',
-            template: '<div ui-view></div>'
-        })
-        .state('Reportes.primarios', {
-            url: 'Reportes/primarios',
-            templateUrl: 'templates/reportes/primarios.html',
-            controller: 'ReportePrimario',
-            resolve: loadSequence('fileDownload')
-
-        })
-        .state('Reportes.intermedios', {
-            url: 'Reportes/intermedios',
-            templateUrl: 'templates/reportes/intermedios.html',
-            controller: 'HojaUno',
-        });
-
-
-    
 });
 
 App.directive('uppercase', function () {
@@ -68,8 +41,13 @@ App.directive('uppercase', function () {
         }
     };
 });
+
+App.constant('CONFIG', {
+    APIURL: APIURL
+});
+
 App.service('Request', function ($http, $q, CONFIG) {
-    this.urlBase = 'Product/Product';
+    this.urlBase = '';
 
     this.catalogs = function (parametros) {
         var defered = $q.defer();
@@ -93,6 +71,7 @@ App.service('Request', function ($http, $q, CONFIG) {
         $http({
             method: data.method,
             url: CONFIG.APIURL + data.url,
+            headers: {"X-API-KEY": "gocko40w0ww0wowk8w00888444k8g8k4oc4k0os8"},
             data: data.data,
             cache: false
         }).then(function successCallback(response) {
@@ -107,12 +86,12 @@ App.service('Request', function ($http, $q, CONFIG) {
                         // options
                         title: data.tituloNotificacionCorrecto,
                         message: response.data.message
-                    },{
+                    }, {
                         // settings
 
                         type: "success",
                         offset: {
-                            x : 20, y : 80
+                            x: 20, y: 80
                         },
                         z_index: 1031,
                         delay: 5000,
@@ -120,37 +99,27 @@ App.service('Request', function ($http, $q, CONFIG) {
                     });
 
 
-                    /* $.bootstrapGrowl(response.data.message, {
-                     offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
-                     type: 'success', // (null, 'info', 'danger', 'success')
-                     });*/
-                    //swal(data.tituloNotificacionCorrecto, response.data.message, "success");
                 } else if (!angular.isUndefined(data.notificacionCorrecto) && data.notificacionCorrecto) {
 
                     $.notify({
                         // options
                         title: data.tituloNotificacionCorrecto,
                         message: response.data.message
-                    },{
+                    }, {
                         // settings
 
                         type: "success",
                         offset: {
-                            x : 20, y : 80
+                            x: 20, y: 80
                         },
                         z_index: 1031,
                         delay: 5000,
 
                     });
 
-                    /*$.bootstrapGrowl(response.data.message, {
-                     offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
-                     type: 'success', // (null, 'info', 'danger', 'success')
-                     });*/
-                    // swal(data.tituloNotificacionCorrecto, response.data.message, "success");
+
                 }
             }
-            $.log.info("RESPONSE SUCCESS",CONFIG.APIURL + data.url, response);
             defered.resolve(response);
         }, function errorCallback(response) {
 
@@ -163,7 +132,6 @@ App.service('Request', function ($http, $q, CONFIG) {
             } else if (!angular.isUndefined(data.notificacionError) && data.notificacionError) {
                 swal(data.tituloNotificacionError, response.data.message, "error");
             }
-            $.log.error("RESPONSE ERROR",CONFIG.APIURL + data.url, response);
             defered.reject(response);
         });
         return defered.promise;
@@ -173,7 +141,7 @@ App.service('Request', function ($http, $q, CONFIG) {
     this.obtener = function (data) {
         var defered = $q.defer();
         this.call({
-            method: 'GET',
+            method: data.method || 'GET',
             url: data.url || (this.urlBase + '/' + data.id),
             notificacionCorrecto: angular.isUndefined(data.notificacionCorrecto) ? true : data.notificacionCorrecto,
             notificacionError: angular.isUndefined(data.notificacionError) ? true : data.notificacionError
@@ -188,8 +156,8 @@ App.service('Request', function ($http, $q, CONFIG) {
     this.listar = function (data) {
         var defered = $q.defer();
         this.call({
-            method: 'POST',
-            url: data.url || (this.urlBase + '/listar'),
+            method: data.method || 'GET',
+            url: data.url || (this.urlBase + ''),
             data: data.data,
             notificacionCorrecto: angular.isUndefined(data.notificacionCorrecto) ? true : data.notificacionCorrecto,
             notificacionError: angular.isUndefined(data.notificacionError) ? true : data.notificacionError
@@ -204,7 +172,7 @@ App.service('Request', function ($http, $q, CONFIG) {
     this.actualizar = function (data) {
         var defered = $q.defer();
         this.call({
-            method: 'PUT',
+            method: data.method || 'PUT',
             url: data.url || (this.urlBase + '/' + data.id),
             data: data.data,
             notificacionCorrecto: angular.isUndefined(data.notificacionCorrecto) ? true : data.notificacionCorrecto,
@@ -220,7 +188,7 @@ App.service('Request', function ($http, $q, CONFIG) {
     this.registrar = function (data) {
         var defered = $q.defer();
         this.call({
-            method: 'POST',
+            method: data.method || 'POST',
             url: data.url || this.urlBase,
             data: data.data,
             notificacionCorrecto: angular.isUndefined(data.notificacionCorrecto) ? true : data.notificacionCorrecto,
@@ -236,7 +204,7 @@ App.service('Request', function ($http, $q, CONFIG) {
     this.eliminar = function (data) {
         var defered = $q.defer();
         this.call({
-            method: 'DELETE',
+            method: data.method || 'DELETE',
             url: data.url || (this.urlBase + '/' + data.id),
             notificacionCorrecto: angular.isUndefined(data.notificacionCorrecto) ? true : data.notificacionCorrecto,
             notificacionError: angular.isUndefined(data.notificacionError) ? true : data.notificacionError
@@ -250,55 +218,5 @@ App.service('Request', function ($http, $q, CONFIG) {
 
 });
 
-App.service('Formulario', function ($http, $q, CONFIG) {
-
-    this.agregarErrores = function (form, errores) {
-        this.validator = $("#formSuive").validate();
-        this.validator.showErrors(errores);
-    };
-
-    this.limpiarErrores = function () {
-
-    }
-});
-
-App.service('FormatoService', function ($http, $q, Request) {
-
-    this.urlBase = 'Formato/primario';
-
-    this.listar = function () {
-        var defered = $q.defer();
-
-        Request.call({
-            method: 'GET',
-            url: this.urlBase + 'listar'
-        }).then(function (response) {
-            defered.resolve(response);
-        }).catch(function (response) {
-            defered.reject(response);
-        });
-        return defered.promise;
-    };
-
-
-    this.generar = function (id) {
-        var defered = $q.defer();
-
-        Request.call({
-            method: 'GET',
-            url: this.urlBase + 'generar/' + id
-        }).then(function (response) {
-            defered.resolve(response);
-        }).catch(function (response) {
-            defered.reject(response);
-        });
-        return defered.promise;
-    };
-
-
-});
-App.controller('ReportePrimario', function ($scope) {
-    $scope.adscripcion = {};
-});
 
 

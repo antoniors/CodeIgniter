@@ -9,6 +9,13 @@
 class BaseController extends CI_Controller
 {
 
+
+    protected $stylesheets = [];
+    protected $javascripts = [];
+    protected $localStylesheets = [];
+    protected $localJavascripts = [];
+
+
     protected $template = null;
 
     public function __construct ()
@@ -19,11 +26,13 @@ class BaseController extends CI_Controller
             $this->template = 'layouts/master';
         }
 
-
     }
 
-    public function response ()
-    {
-        return new ResponseAjax();
+    protected function getStylesheets() {
+        return array_merge($this->stylesheets,$this->localStylesheets);
+    }
+
+    protected function getJavascripts() {
+        return array_merge($this->javascripts,$this->localJavascripts);
     }
 }

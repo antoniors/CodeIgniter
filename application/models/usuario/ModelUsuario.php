@@ -3,12 +3,11 @@
 /**
  * Class UsuarioModel
  */
-class Model_Usuario extends ModelBase
+class ModelUsuario extends ModelBase
 {
-    protected $table = 'api_logs';
+    protected $table = 'usuario';
     var $nombre = '';
     var $email = '';
-    var $password = '';
 
     /**
      * UsuarioModel constructor.
@@ -26,7 +25,6 @@ class Model_Usuario extends ModelBase
     {
         $this->nombre = $request['nombre'];
         $this->email = $request['email'];
-        $this->password = $request['password'];
 
         $this->db->insert($this->table, $this);
     }
@@ -38,12 +36,22 @@ class Model_Usuario extends ModelBase
     {
         $this->nombre = $request['nombre'];
         $this->email = $request['email'];
-        $this->password = $request['password'];
 
 
         $this->db->update($this->table, $this, array( 'id' => $request['id'] ));
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    function obtener($id) {
+        return  $this->db->where('id',$id)->get($this->table);
+    }
+
+    /**
+     * @return mixed
+     */
     function listar() {
         return  $this->db->get($this->table);
     }

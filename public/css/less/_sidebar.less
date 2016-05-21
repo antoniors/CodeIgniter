@@ -8,23 +8,76 @@
   background-color: lighten(@brand-primary, 6.5%);
 }
 
-/*
 
-.sidebar-content {
-  width: 220px;
-  color: #acb5bf;
+#page-container.sidebar-visible-lg-mini.sidebar-light #sidebar .sidebar-nav .sidebar-nav-menu + ul {
+  background-color: #e6e6e6;
+}
+
+#page-container.sidebar-visible-lg-mini #sidebar .sidebar-nav ul a {
+  margin: 0;
+  padding-left: 10px;
+  border-left: none;
+}
+
+#page-container.sidebar-visible-lg-mini #sidebar .sidebar-nav ul ul {
+  margin-left: 0;
+}
+
+#page-container.sidebar-visible-lg-mini #sidebar .sidebar-nav > li.active > ul {
+  display: none;
+}
+
+#page-container.sidebar-visible-lg-mini #sidebar .sidebar-nav .sidebar-nav-menu.open + ul {
+  display: block !important;
+}
+
+.sidebar-nav ul {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  -webkit-transition: background .25s ease-out;
+  transition: background .25s ease-out;
+}
+
+.sidebar-nav .active > ul,
+.sidebar-nav .open + ul {
+  display: block;
 
 }
 
-.sidebar-section {
-  padding: 10px 15px;
+.sidebar-nav ul a {
+  /*margin: 0 0 0 19px;*/
+  padding-left: 39px;
+  border-left: 1px solid #454e59;
+  min-height: 34px;
+  line-height: 34px;
+  font-weight: normal;
+  color: lighten(@brand-primary, 30%);
 }
 
-#sidebar-extra-info {
-  padding: 7px 15px 10px;
+.sidebar-nav ul a.open,
+.sidebar-nav ul li.active > a {
+  color: lighten(@brand-primary, 6.5%);
 }
 
-*/
+.sidebar-nav ul ul {
+  margin: 0 0 0 19px;
+}
+
+.sidebar-nav ul ul a {
+  margin: 0;
+  padding-left: 19px;
+  font-size: 13px;
+  min-height: 32px;
+  line-height: 32px;
+}
+
+.sidebar-nav ul .active > ul,
+.sidebar-nav ul .open + ul {
+  background-color: #454e59;
+}
+
 .sidebar-title {
   height: 50px;
   line-height: 50px;
@@ -38,19 +91,7 @@
   -webkit-transition: background .2s ease-out;
   transition: background .2s ease-out;
 }
-/**
-a.sidebar-title:hover,
-a.sidebar-title:focus {
-  color: #ffffff;
-  text-decoration: none;
-}
 
-.sidebar-title i {
-  width: 18px;
-  margin-right: 8px;
-  opacity: .75;
-}
-*/
 .sidebar-nav {
   list-style: none;
   margin: 0;
@@ -74,21 +115,6 @@ a.sidebar-title:focus {
 }
 
 
-/*
-.sidebar-separator {
-  padding: 5px 0;
-  color: #ffffff;
-  text-align: center;
-}
-*/
-
-
-/*
-#sidebar-toggle-mini {
-  display: none;
-}
-
-*/
 .sidebar-logo {
   padding-top: 20px;
   padding-bottom: 55px;
@@ -115,103 +141,15 @@ a.sidebar-title:focus {
 }
 
 .sidebar-nav a:hover {
-  /*color: #454e59;*/
-  /*background: rgba(167, 156, 101, .75);*/
+
   color: @brand-info;
 }
-/*
-.sidebar-nav a.open,
-.sidebar-nav li.active > a {
-  background: rgba(0, 0, 0, .2);
-}
 
-.sidebar-nav a.active {
-  background: #ffffff;
-  color: #454e59;
-  border-right: 4px solid #5ccdde;
-}
-*/
 .sidebar-nav a > .sidebar-nav-icon {
   margin-right: 25px;
   font-size: 25px;
 }
-/*
 
-/*
-.sidebar-nav a > .sidebar-nav-icon,
-.sidebar-nav a > .sidebar-nav-indicator {
-  display: inline-block;
-  opacity: .5;
-  width: 18px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.sidebar-nav a > .sidebar-nav-indicator {
-  float: right;
-  line-height: inherit;
-  margin-left: 4px;
-  font-size: 10px;
-  -webkit-transition: -webkit-transform .15s ease-out;
-  transition: transform .15s ease-out;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-
-.sidebar-nav a.active > .sidebar-nav-indicator,
-.sidebar-nav a.open > .sidebar-nav-indicator,
-.sidebar-nav li.active > a > .sidebar-nav-indicator {
-  -webkit-transform: rotate(-90deg) rotateZ(0deg);
-  transform: rotate(-90deg) rotateZ(0deg);
-}
-
-.sidebar-nav ul {
-  display: none;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-  -webkit-transition: background .25s ease-out;
-  transition: background .25s ease-out;
-}
-
-.sidebar-nav .active > ul,
-.sidebar-nav .open + ul {
-  display: block;
-  background: rgba(255, 255, 255, .1);
-}
-
-.sidebar-nav ul a {
-  margin: 0 0 0 19px;
-  padding-left: 19px;
-  border-left: 1px solid #454e59;
-  min-height: 34px;
-  line-height: 34px;
-  font-weight: normal;
-}
-
-.sidebar-nav ul a.open,
-.sidebar-nav ul li.active > a {
-  background: none;
-}
-
-.sidebar-nav ul ul {
-  margin: 0 0 0 19px;
-}
-
-.sidebar-nav ul ul a {
-  margin: 0;
-  padding-left: 19px;
-  font-size: 13px;
-  min-height: 32px;
-  line-height: 32px;
-}
-
-.sidebar-nav ul .active > ul,
-.sidebar-nav ul .open + ul {
-  background-color: #454e59;
-}*/
 #page-container.sidebar-visible-xs #sidebar {
   left: 0;
 }
