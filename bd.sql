@@ -36,3 +36,17 @@ USE prueba;
        `email` VARCHAR(50) NOT NULL,
        PRIMARY KEY (`id`)
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `prueba`.`keys`
+(`id`,
+`user_id`,
+`key`,
+`level`,
+`ignore_limits`,
+`is_private_key`,
+`ip_addresses`,
+`date_created`)
+VALUES
+('1', '0', '8k8884wgckscg0g0o4kgs8owk8gso8g8soc4c8cc', '10', '1', '0', NULL, '1463818875');
+
+

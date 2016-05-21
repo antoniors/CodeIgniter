@@ -71,7 +71,7 @@ App.service('Request', function ($http, $q, CONFIG) {
         $http({
             method: data.method,
             url: CONFIG.APIURL + data.url,
-            headers: {"X-API-KEY": "gocko40w0ww0wowk8w00888444k8g8k4oc4k0os8"},
+            headers: {"X-API-KEY": "8k8884wgckscg0g0o4kgs8owk8gso8g8soc4c8cc"},
             data: data.data,
             cache: false
         }).then(function successCallback(response) {

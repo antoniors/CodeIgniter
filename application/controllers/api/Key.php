@@ -35,8 +35,6 @@ class Key extends REST_Controller {
     {
         // Build a new key
         $key = $this->_generate_key();
-        $request = json_decode(file_get_contents('php://input'), true);
-
 
         // If no key level provided, provide a generic key
         $level = isset($request['level']) ? $request['level'] : 1;

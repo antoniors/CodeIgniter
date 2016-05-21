@@ -32,7 +32,7 @@ AppConfig = {
 
 
 $('#sidebar-scroll').slimScroll({
-        height: $('.sidebar-nav').outerHeight() - 100,
+        height: $('.sidebar-nav').outerHeight() + 200,
         color: '#71c5e8',
         size: '5px',
         touchScrollStep: 100,
