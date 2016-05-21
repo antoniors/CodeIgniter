@@ -9,20 +9,21 @@
 class BaseController extends CI_Controller
 {
 
-    protected $template=null;
+    protected $template = null;
+
     public function __construct ()
     {
         parent::__construct();
 
-        if(is_null($this->template)){
+        if ( is_null($this->template) ) {
             $this->template = 'layouts/master';
         }
 
 
-
     }
 
-    public function response ( ) {
+    public function response ()
+    {
         return new ResponseAjax();
     }
 }

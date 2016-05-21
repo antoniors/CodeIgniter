@@ -16,7 +16,7 @@ require APPPATH . '/libraries/REST_Controller.php';
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  */
-class Log extends REST_Controller {
+class LogApi extends REST_Controller {
 
 
 
@@ -30,7 +30,6 @@ class Log extends REST_Controller {
 
     public function log_get()
     {
-
 
         $this->set_response( $this->ModelApi->log(), REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
     }
