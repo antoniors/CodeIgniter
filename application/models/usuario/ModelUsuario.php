@@ -1,27 +1,26 @@
 <?php
 
 /**
- * Class UsuarioModel
+ * Class UsuarioModel.
  */
 class ModelUsuario extends ModelBase
 {
     protected $table = 'usuario';
-    var $nombre = '';
-    var $email = '';
+    public $nombre = '';
+    public $email = '';
 
     /**
      * UsuarioModel constructor.
      */
-    function __construct ()
+    public function __construct()
     {
         parent::__construct();
     }
 
-
     /**
      * @author Pedro Rodriguez <li.antoniors@gmail.com>
      */
-    function registrar ($request)
+    public function registrar($request)
     {
         $this->nombre = $request['nombre'];
         $this->email = $request['email'];
@@ -32,27 +31,30 @@ class ModelUsuario extends ModelBase
     /**
      * @author Pedro Rodriguez <li.antoniors@gmail.com>
      */
-    function actualizar ($request)
+    public function actualizar($request)
     {
         $this->nombre = $request['nombre'];
         $this->email = $request['email'];
 
 
-        $this->db->update($this->table, $this, array( 'id' => $request['id'] ));
+        $this->db->update($this->table, $this, ['id' => $request['id']]);
     }
 
     /**
      * @param $id
+     *
      * @return mixed
      */
-    function obtener($id) {
-        return  $this->db->where('id',$id)->get($this->table);
+    public function obtener($id)
+    {
+        return  $this->db->where('id', $id)->get($this->table);
     }
 
     /**
      * @return mixed
      */
-    function listar() {
+    public function listar()
+    {
         return  $this->db->get($this->table);
     }
 }
